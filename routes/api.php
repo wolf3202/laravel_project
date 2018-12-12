@@ -20,7 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Route::resource('articles', 'ArticleController');
 Route::apiResources([
     'articles' => 'ArticleController',
-    'authors' => 'AuthorController'
+    'authors' => 'AuthorController',
+    'interests' => 'InterestController'
 ]);
 
 Route::get('/authors/{authorId}/interest', 'AuthorController@getAuthorInterest');
