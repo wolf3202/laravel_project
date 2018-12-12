@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('test', 'TestController');
+
+Route::get('/authors/{authorId}/interest', 'AuthorController@getAuthorInterest');

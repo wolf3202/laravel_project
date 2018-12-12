@@ -38,4 +38,10 @@ class AuthorController extends Controller
 
         return response()->json(null, 204);
     }
+
+    public function getAuthorInterest($authorId)
+    {
+        $interest = Author::find($authorId)->interests;
+        return $interest;
+    }
 }

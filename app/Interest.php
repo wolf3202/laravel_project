@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Interest extends Model
 {
-    protected $fillable = ['interest'];
+    protected $fillable = ['name'];
 
     public function authors()
     {
-        return $this->belongsToMany('App/Author');
+        return $this->belongsToMany('App/Author', 'author_interest', 'interest_id', 'author_id')->withTimestamps();
     }
 }

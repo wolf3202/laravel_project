@@ -14,10 +14,12 @@ class CreateAuthorInterestTable extends Migration
     public function up()
     {
         Schema::create('author_interest', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('author_id');
-            $table->integer('interest_id');
+            $table->integer('author_id')->unsigned();
+            $table->integer('interest_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
+            $table->foreign('interest_id')->references('id')->on('interests')->onDelete('cascade');
         });
     }
 

@@ -22,3 +22,5 @@ Route::apiResources([
     'articles' => 'ArticleController',
     'authors' => 'AuthorController'
 ]);
+
+Route::get('/authors/{authorId}/interest', 'AuthorController@getAuthorInterest');
