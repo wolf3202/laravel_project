@@ -17,4 +17,11 @@ Route::get('/', function () {
 
 Route::resource('test', 'TestController');
 
+Route::resources([
+    'articles' => 'ArticleController',
+    'authors' => 'AuthorController',
+    'interests' => 'InterestController'
+]);
+
 Route::get('/authors/{authorId}/interest', 'AuthorController@getAuthorInterest');
+Route::get('/interests/{interestId}/author', 'InterestController@getInterestAuthor');

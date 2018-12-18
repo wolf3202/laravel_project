@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ArticleCreateRequest;
+use App\Http\Requests\ArticleEditRequest;
+use App\Http\Resources\ArticleResource;
 use App\Article;
 
 class ArticleController extends Controller
 {
     public function index()
     {
-        return Article::all();
+        return ArticleResource::collection(Article::all());
     }
 
     public function show(Article $article)
@@ -17,14 +19,14 @@ class ArticleController extends Controller
         return $article;
     }
 
-    public function store(Request $request)
+    public function store(ArticleCreateRequest $request)
     {
         $article = Article::create($request->all());
 
         return response()->json($article, 201);
     }
 
-    public function update(Request $request, Article $article)
+    public function update(ArticleEditRequest $request, Article $article)
     {
         $article->update($request->all());
 
@@ -32,7 +34,7 @@ class ArticleController extends Controller
         return response()->json($article, 200);
     }
 
-    public function delete(Article $article)
+    public function destroy(Article $article)
     {
         $article->delete();
 
