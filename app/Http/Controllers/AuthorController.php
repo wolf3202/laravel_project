@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\AuthorCreateRequest;
+use App\Http\Requests\AuthorEditRequest;
+use App\Http\Resources\AuthorResource;
 use App\Author;
 
 class AuthorController extends Controller
 {
     public function index()
     {
-        return Author::all();
+        return AuthorResource::collection(Author::all());
     }
 
     public function show(Author $author)
@@ -17,22 +19,23 @@ class AuthorController extends Controller
         return $author;
     }
 
-    public function store(Request $request)
+    public function store(AuthorCreateRequest $request)
     {
         $author = Author::create($request->all());
 
         return response()->json($author, 201);
     }
 
-    public function update(Request $request, Author $author)
+    public function update(AuthorEditRequest $request, Author $author)
     {
         $author->update($request->all());
 
+        $author->interests()->sync($request->interest_ids);
 
         return response()->json($author, 200);
     }
 
-    public function delete(Author $author)
+    public function destroy(Author $author)
     {
         $author->delete();
 
