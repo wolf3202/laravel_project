@@ -18,6 +18,7 @@ class CreateAuthorsTable extends Migration
             $table->string('name');
             $table->string('sex');
             $table->integer('age');
+            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }

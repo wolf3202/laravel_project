@@ -25,7 +25,7 @@ class InterestCreateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'author_ids' => 'required|exists:authors,id',
+            //'author_ids' => 'required|exists:authors,id',
         ];
     }
 }

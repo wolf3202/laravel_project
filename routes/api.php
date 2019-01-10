@@ -26,3 +26,5 @@ Route::apiResources([
 
 Route::get('/authors/{authorId}/interest', 'AuthorController@getAuthorInterest');
 Route::get('/interests/{interestId}/author', 'InterestController@getInterestAuthor');
+Route::post('/upload', 'UploadController@storeImage');
+

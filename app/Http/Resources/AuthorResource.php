@@ -19,6 +19,7 @@ class AuthorResource extends JsonResource
             'name' => $this->name,
             'age' => $this->age,
             'sex' => $this->sex,
+            'avatar' => $this->avatar_url,
             'interest_ids' => $this->interests->pluck('id'),
         ];
     }

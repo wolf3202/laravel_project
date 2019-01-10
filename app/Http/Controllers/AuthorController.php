@@ -28,6 +28,10 @@ class AuthorController extends Controller
 
     public function update(AuthorEditRequest $request, Author $author)
     {
+        if ($request->has('avatar')) {
+            $author->avatar = $request->avatar;
+        } else $author->avatar = null;
+
         $author->update($request->all());
 
         $author->interests()->sync($request->interest_ids);
